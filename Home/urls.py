@@ -1,7 +1,11 @@
 from django.urls import path
 
-from . import views
+from home import views
 
 urlpatterns = [
-    path('', views.aboutUs, name='About Us'),
+    path('', views.home, name='Home Page'),
+    path('about_us/', views.about_us, name='About Us'),
+    path('products/', views.products, name='Products'),
+    # Path for individual product detail page, done via product_id primary key
+    path('products/<int:pk>', views.product_details, name='Product Details'),
 ]
