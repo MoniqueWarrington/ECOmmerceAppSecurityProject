@@ -1,8 +1,10 @@
 from django.http import HttpResponse
+from django.views import generic
+from django.shortcuts import render
 
 
 def home(request):
-    return HttpResponse("This will be the Home Page!")
+    return render(request, "home.html")
 
 
 def about_us(request):
@@ -13,5 +15,5 @@ def products(request):
     return HttpResponse("This will be the products page!!")
 
 
-def product_details(request, product_id):
-    return HttpResponse("This will be the product details page")
+def product_details(request):
+    return render(request, "product_detail.html")
