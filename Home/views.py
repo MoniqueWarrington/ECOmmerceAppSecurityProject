@@ -8,7 +8,7 @@ def home(request):
 
 
 def about_us(request):
-    return HttpResponse("This will be the about us page")
+    return render(request, "about_us.html")
 
 
 def products(request):
