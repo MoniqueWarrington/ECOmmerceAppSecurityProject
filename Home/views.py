@@ -12,7 +12,7 @@ def about_us(request):
 
 
 def products(request):
-    return HttpResponse("This will be the products page!!")
+    return render(request, "products.html")
 
 
 def product_details(request):
