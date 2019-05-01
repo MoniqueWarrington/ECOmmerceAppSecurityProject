@@ -9,3 +9,4 @@ urlpatterns = [
     # Path for individual product detail page, done via product_id primary key
     path('product_details/', views.product_details, name='Product Details'),
 ]
+"""Hello"""
