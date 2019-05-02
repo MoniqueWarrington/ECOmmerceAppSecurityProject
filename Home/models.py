@@ -43,8 +43,10 @@ class Product(models.Model):
     product_url = models.URLField(max_length=200)
     product_price = models.CharField(max_length=10, default="")
     product_description = models.CharField(max_length=300, default="")
+    product_image = models.ImageField(default="")
 
     # to make the class more readable when outputted
+
     def __str__(self):
         return '%s %s %s %s %s' % (self.product_id,
                                    self.product_name,

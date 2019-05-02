@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.views import generic
 from django.shortcuts import render
+from home.models import Product
 
 
 def home(request):
@@ -12,8 +13,8 @@ def about_us(request):
 
 
 def products(request):
-    return render(request, "products.html")
+    return render(request, "products.html",  {'products': Product.objects.all()})
 
 
 def product_details(request):
-    return render(request, "product_detail.html")
+    return render(request, "product_detail.html", {'products': Product.objects.all()})
