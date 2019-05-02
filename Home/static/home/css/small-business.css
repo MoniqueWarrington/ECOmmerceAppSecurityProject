@@ -6,3 +6,12 @@
 body {
   padding-top: 56px;
 }
+
+.display_text {
+  text-transform: uppercase;
+  font-weight: bolder;
+}
+
+#staff {
+  color: lime;
+}
