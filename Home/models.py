@@ -43,7 +43,7 @@ class Product(models.Model):
     product_url = models.URLField(max_length=200)
     product_price = models.CharField(max_length=10, default="")
     product_description = models.CharField(max_length=300, default="")
-    product_image = models.ImageField(default="")
+    product_image = models.ImageField(upload_to="gallery")
 
     # to make the class more readable when outputted
 

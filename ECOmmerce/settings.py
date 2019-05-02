@@ -51,7 +51,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ECOmmerce.urls'
-
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.static',
+)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -68,8 +70,11 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'ECOmmerce.wsgi.application'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
@@ -122,3 +127,5 @@ STATIC_URL = '/static/'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL = '/'
+
+# for images
