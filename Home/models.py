@@ -6,7 +6,7 @@ class Administrator(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email_address = models.EmailField(max_length=100)
-    phone_number = models.IntegerField(max_length=25)
+    phone_number = models.IntegerField
     username = models.CharField(max_length=50)
 
     # to make the class more readable when outputted
@@ -24,7 +24,7 @@ class Consumer(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email_address = models.EmailField(max_length=100)
-    phone_number = models.IntegerField(max_length=25)
+    phone_number = models.IntegerField
     username = models.CharField(max_length=50)
 
     # to make the class more readable when outputted
@@ -41,6 +41,8 @@ class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=100)
     product_url = models.URLField(max_length=200)
+    product_price = models.CharField(max_length=10)
+    product_description = models.CharField(max_length=300)
 
     # to make the class more readable when outputted
     def __str__(self):
