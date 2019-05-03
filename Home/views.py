@@ -1,6 +1,6 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.views import generic
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from home.models import Product
 
 
@@ -13,8 +13,12 @@ def about_us(request):
 
 
 def products(request):
-    return render(request, "products.html",  {'products': Product.objects.all()})
+    return render(request, "products.html", {'products': Product.objects.all()})
 
 
-def product_details(request):
-    return render(request, "product_detail.html", {'products': Product.objects.all()})
+def product_detail(request, product_id):
+    try:
+        products = Product.objects.get(product_id=product_id)
+    except Product.DoesNotExist:
+        raise Http404('Product not found')
+    return render(request, "product_detail.html", {'products': products})

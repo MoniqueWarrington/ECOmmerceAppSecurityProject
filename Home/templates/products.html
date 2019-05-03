@@ -99,7 +99,7 @@
                 <a href="{{product.product_url}}"><img class="card-img-top" src="{{ product.product_image.url }}" alt="{{product.product_name}}"></a>
                 <div class="card-body">
                   <h4 class="card-title">
-                    <a href="{{product.product_url}}">{{product.product_name|capfirst}}</a>
+                    <a href="/home/product_detail/{{product.product_id}}">{{product.product_name|capfirst}}</a>
                   </h4>
                   <h5>{{product.product_price}}</h5>
                   <p class="card-text">{{product.product_description}}</p>
