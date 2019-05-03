@@ -44,9 +44,9 @@
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item nav-link display_text">User: {{ user.get_username }}</li>
-            <li class="nav-item display_text"><a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">logout</a></li>
+            <li class="nav-item display_text"><a class="nav-link" href="{% url 'logout'%}?next={% url 'Home Page' %}">logout</a></li>
           {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+            <li class="nav-item display_text"><a class="nav-link" href="{% url 'login'%}?next={{request.path}}">Login</a></li>
           {% endif %}
           {% if user.is_staff %}
           <li class="nav-item nav-link display_text" id="staff">staff</li>
