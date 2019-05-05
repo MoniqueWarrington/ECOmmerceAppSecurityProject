@@ -2,6 +2,7 @@ from django.http import HttpResponse, Http404
 from django.views import generic
 from django.shortcuts import get_object_or_404, render
 from home.models import Product
+from home.models import Administrator
 
 
 def home(request):
@@ -9,7 +10,7 @@ def home(request):
 
 
 def about_us(request):
-    return render(request, "about_us.html")
+    return render(request, "about_us.html", {'about_us': Administrator.objects.all()})
 
 
 def products(request):
