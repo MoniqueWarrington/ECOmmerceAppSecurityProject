@@ -6,17 +6,20 @@ class Administrator(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email_address = models.EmailField(max_length=100)
-    phone_number = models.IntegerField
-    username = models.CharField(max_length=50)
+    phone_number = models.CharField(max_length=50, default="")
+    username = models.CharField(max_length=50, default="")
+    company_role = models.CharField(max_length=50, default="")
+    user_image = models.ImageField(upload_to="admin_photo", default="http://placehold.it/500x325")
 
     # to make the class more readable when outputted
     def __str__(self):
-        return '%s %s %s %s %s %s' % (self.admin_ID,
-                                      self.first_name,
-                                      self.last_name,
-                                      self.email_address,
-                                      self.phone_number,
-                                      self.username)
+        return '%s %s %s %s %s %s %s' % (self.admin_ID,
+										 self.first_name,
+										 self.last_name,
+										 self.email_address,
+										 self.phone_number,
+										 self.username,
+										 self.company_role)
 
 
 class Review(models.Model):
@@ -31,7 +34,7 @@ class Consumer(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email_address = models.EmailField(max_length=100)
-    phone_number = models.IntegerField
+    phone_number = models.CharField(max_length=50, default="")
     username = models.CharField(max_length=50)
 
     # to make the class more readable when outputted
