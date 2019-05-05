@@ -19,6 +19,13 @@ class Administrator(models.Model):
                                       self.username)
 
 
+class Review(models.Model):
+    review_ID = models.AutoField(primary_key=True)
+    product_ID = models.IntegerField
+    user_id = models.IntegerField
+    review_text = models.TextField
+
+
 class Consumer(models.Model):
     consumer_ID = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=30)
