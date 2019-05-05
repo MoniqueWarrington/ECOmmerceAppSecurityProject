@@ -21,9 +21,9 @@ class Administrator(models.Model):
 
 class Review(models.Model):
     review_ID = models.AutoField(primary_key=True)
-    product_ID = models.IntegerField
-    user_id = models.IntegerField
-    review_text = models.TextField
+    product_ID = models.IntegerField(default=-1)
+    user_id = models.IntegerField(default=-1)
+    review_text = models.TextField(default="")
 
 
 class Consumer(models.Model):

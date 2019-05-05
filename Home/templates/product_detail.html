@@ -49,7 +49,7 @@
           {% endif %}
           {% if user.is_staff %}
           <li class="nav-item nav-link display_text" id="staff">staff</li>
-          {% endif %} 
+          {% endif %}
         </ul>
       </div>
     </div>
@@ -69,7 +69,6 @@
         </div>
       </div>
       <!-- /.col-lg-3 -->
-      {% block content %}
       <div class="col-lg-9">
         <div class="card mt-4">
           <img class="card-img-top img-fluid" src="{{products.product_image.url}}" alt="">
@@ -81,8 +80,19 @@
             4.0 stars
           </div>
         </div>
-        {% endblock %}
         <!-- /.card -->
+
+        {% block content %}
+        {% if form %}
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit" />
+          </form>
+        {% else %}
+          <p>Please log in to leave a review. </p>
+        {% endif %}
+        {% endblock %}
 
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
