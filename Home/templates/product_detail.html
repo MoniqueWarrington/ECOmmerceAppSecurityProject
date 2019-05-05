@@ -76,12 +76,25 @@
           <div class="card-body">
             <h3 class="card-title">{{ products.product_name }}</h3>
             <h4>{{products.product_price }}</h4>
-            <p class="card-text">{{products.product_description}}</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
           </div>
         </div>
         {% endblock %}
+        <!-- /.card -->
+		
+		<div class="card card-outline-secondary my-4">
+          <div class="card-header">
+            Product Details
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{products.product_description}}</p>
+			<br>
+			<small class="text-muted">Consumer Rating &ensp;</small>
+            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+            4.0 stars
+			<br><br>
+			<a class="btn btn-primary" href="{{products.product_url}}">Link to Product Here!</a>
+          </div>
+        </div>
         <!-- /.card -->
 
         <div class="card card-outline-secondary my-4">
