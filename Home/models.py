@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Administrator(models.Model):
@@ -22,12 +23,6 @@ class Administrator(models.Model):
 										 self.company_role)
 
 
-class Review(models.Model):
-    review_ID = models.AutoField(primary_key=True)
-    product_ID = models.IntegerField(default=-1)
-    user_id = models.IntegerField(default=-1)
-    review_text = models.TextField(default="")
-
 
 class Consumer(models.Model):
     consumer_ID = models.AutoField(primary_key=True)
@@ -37,6 +32,10 @@ class Consumer(models.Model):
     phone_number = models.CharField(max_length=50, default="")
     username = models.CharField(max_length=50)
 
+    # below changed to de-clutter admin drop list
+    def __str__(self):
+        return '%s %s' % (self.consumer_ID, self.first_name)
+""" 
     # to make the class more readable when outputted
     def __str__(self):
         return '%s %s %s %s %s %s' % (self.consumer_ID,
@@ -46,7 +45,7 @@ class Consumer(models.Model):
                                       self.phone_number,
                                       self.username)
 
-
+ """
 class Product(models.Model):
     product_id = models.AutoField(primary_key=True)
     product_name = models.CharField(max_length=100)
@@ -55,6 +54,12 @@ class Product(models.Model):
     product_description = models.CharField(max_length=300, default="")
     product_image = models.ImageField(upload_to="gallery")
 
+    # ditto above but changed to show only product ID for the review drip list and the reviews
+    def __str__(self):
+        return '%s %s' % (self.product_id, self.product_name)
+
+
+""" 
     # to make the class more readable when outputted
 
     def __str__(self):
@@ -63,6 +68,22 @@ class Product(models.Model):
                                    self.product_url,
                                    self.product_price,
                                    self.product_description)
+
+ """
+
+    
+
+class Review(models.Model):
+    review_ID = models.AutoField(primary_key=True)
+    product_ID = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    consumer_ID = models.ForeignKey(
+        Consumer, on_delete=models.SET_NULL, null=True)
+
+    # product_ID = models.IntegerField(default=-1)
+    user_id = models.IntegerField(default=-1)
+    review_text = models.TextField(default="")
+    review_date = models.DateTimeField('date reviewd', auto_now=timezone.now())
+
 
 
 class Company(models.Model):
