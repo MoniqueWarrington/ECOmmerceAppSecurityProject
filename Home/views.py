@@ -22,8 +22,10 @@ def product_detail(request, product_id):
         products = Product.objects.get(product_id=product_id)
     except Product.DoesNotExist:
         raise Http404('Product not found')
+    
+    reviews = Review.objects.get(product_ID=product_id)
 
-    context = {'products': products}
+    context = {'products': products, 'reviews': reviews}
 
     if request.user.is_authenticated:
         form = ConsumerReviewForm
