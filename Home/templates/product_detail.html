@@ -96,10 +96,12 @@
           </div>
 
           <div class="card-body">
-            <p>Review id: {{ reviews.review_ID }}</p>
-            <p>{{ reviews.review_text }}</p>
-            <small class="text-muted">Posted by {{ reviews.consumer_ID.first_name }} {{ reviews.consumer_ID.last_name }} on {{ reviews.review_date }} </small>
-            <hr>
+            {% for review in reviews %}
+              <p>Review id: {{ review.review_ID }}</p>
+              <p>{{ review.review_text }}</p>
+              <small class="text-muted">Posted by {{ review.consumer_ID.first_name }} {{ review.consumer_ID.last_name }} on {{ review.review_date }} </small>
+              <hr>
+            {% endfor %}
 
             {% block content %}
               {% if form %}
